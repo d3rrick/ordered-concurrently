@@ -1,5 +1,5 @@
 # Ordered Concurrently
-A go module that processes work concurrently and returns output in a predefined order
+A go module that processes work concurrently and returns output in a channel with a predefined order
 
 # Usage 
 ## Import package
