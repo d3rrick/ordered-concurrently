@@ -1,3 +1,5 @@
+<img src="https://github.com/tejzpr/ordered-concurrently/actions/workflows/tests.yml/badge.svg" />
+
 # Ordered Concurrently
 A go module that processes work concurrently and returns output in a channel with a predefined order
 
