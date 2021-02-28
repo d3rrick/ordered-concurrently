@@ -6,13 +6,13 @@ import (
 
 // OrderedInput input for Process
 type OrderedInput struct {
-	value interface{}
-	order int
+	Value interface{}
+	Order int
 }
 
 // OrderedOutput is the output channel type from Process
 type OrderedOutput struct {
-	value interface{}
+	Value interface{}
 }
 
 // WorkFunction the function which performs work
@@ -46,7 +46,7 @@ func Process(inputChan <-chan *OrderedInput, wf WorkFunction, poolSize int) <-ch
 					if item == nil {
 						break
 					}
-					outputChan <- &OrderedOutput{value: item.value}
+					outputChan <- &OrderedOutput{Value: item.value}
 					item.wg.Done()
 					delete(outputMap, current)
 					current++
@@ -68,7 +68,7 @@ func Process(inputChan <-chan *OrderedInput, wf WorkFunction, poolSize int) <-ch
 
 		for input := range inputChan {
 			wg.Add(1)
-			processChan <- &processInput{input.value, input.order, &wg}
+			processChan <- &processInput{input.Value, input.Order, &wg}
 		}
 		// Wait till execution is complete
 		wg.Wait()
