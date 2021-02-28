@@ -1,7 +1,6 @@
 package orderedconcurrently
 
 import (
-	"fmt"
 	"math/rand"
 	"sync"
 	"testing"
@@ -21,7 +20,7 @@ func Test(t *testing.T) {
 	go func() {
 		outChan := Process(inputChan, work, 10)
 		for out := range outChan {
-			fmt.Println(out.Value)
+			t.Log(out.Value)
 			wg.Done()
 		}
 	}()
