@@ -57,13 +57,13 @@ func Process(inputChan <-chan *OrderedInput, wf WorkFunction, poolSize int) <-ch
 
 		// Create a goroutine pool
 		for i := 0; i < processors; i++ {
-			go func(processor int) {
+			go func() {
 				for input := range processChan {
 					// Process work
 					input.value = wf(input.value)
 					aggregatorChan <- input
 				}
-			}(i)
+			}()
 		}
 
 		for input := range inputChan {
