@@ -39,4 +39,4 @@ func main() {
 
 ```
 # Credits
-Thanks to [u/justinisrael](https://www.reddit.com/user/justinisrael/) for his inputs on improving resource usage.
+Thanks to [u/justinisrael](https://www.reddit.com/user/justinisrael/) for inputs on improving resource usage.
