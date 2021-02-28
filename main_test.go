@@ -8,7 +8,7 @@ import (
 )
 
 // The work that needs to be performed
-func work(val interface{}) interface{} {
+func workFn(val interface{}) interface{} {
 	time.Sleep(time.Millisecond * time.Duration(rand.Intn(100)))
 	return val
 }
@@ -18,7 +18,7 @@ func Test(t *testing.T) {
 	inputChan := make(chan *OrderedInput)
 	wg := &sync.WaitGroup{}
 	go func() {
-		outChan := Process(inputChan, work, 10)
+		outChan := Process(inputChan, workFn, 10)
 		for out := range outChan {
 			t.Log(out.Value)
 			wg.Done()

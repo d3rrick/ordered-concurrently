@@ -9,7 +9,7 @@ import concurrently "github.com/tejzpr/ordered-concurrently"
 ## Create a work function
 ```go
 // The work that needs to be performed
-func work(val interface{}) interface{} {
+func workFn(val interface{}) interface{} {
 	time.Sleep(time.Millisecond * time.Duration(rand.Intn(100)))
 	return val
 }
@@ -21,7 +21,7 @@ func main() {
 	inputChan := make(chan *concurrently.OrderedInput)
 	wg := &sync.WaitGroup{}
 	go func() {
-		outChan := concurrently.Process(inputChan, work, 10)
+		outChan := concurrently.Process(inputChan, workFn, 10)
 		for out := range outChan {
 			fmt.Println(out.Value)
 			wg.Done()
